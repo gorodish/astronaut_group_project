@@ -1,17 +1,2 @@
-Start Up
-=========
-top_level/client:
-webpack -w (run webpack)
 
-top_level:
-mongod (starts database).
-
-CTRL + T = open new tab
-top_level:
-mongo (opens database)
-
-CTRL + T = open new tab
-top_level:
-nodemon server.js (kick off server to run at local host)
-==================================
-==================================
+astronaut_group_project is a CodeClan group project. The app will provide a dashboard for anastronaut on the International Space Station. It will be written in JavaScript and use data APIs.
