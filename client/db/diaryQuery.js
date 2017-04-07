@@ -15,6 +15,17 @@ DiaryQuery.prototype = {
          })
        }
      })
+   },
+
+   all: function(onQueryFinished){
+    MongoClient.connect(this.url, function(err, db){
+      var collection = db.collection('diary');
+      collection.find().toArray(function(err, docs){
+        onQueryFinished(docs);
+      })
+
+      
+    })
    }
 };
 

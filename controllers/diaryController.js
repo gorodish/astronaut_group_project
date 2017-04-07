@@ -14,7 +14,9 @@ router.use(bodyParser.json());
 
 
 router.get('/', function(req, res){
-  res.sendFile(htmlPage);
+  query.all(function(results){
+    res.json(results);
+  })
 });
 
 router.post('/', function(req, res){  
