@@ -1,7 +1,9 @@
 var Diary = function(text){
   this.timeSinceEpoch = Date.now();
-  this.where = this.setWhere();
+  this.where = null;
   this.text = text;
+
+  this.setWhere;
 }
 
 Diary.prototype = {

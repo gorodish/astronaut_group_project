@@ -8,7 +8,8 @@ DiaryQuery.prototype = {
   add: function(newEntry, onQueryFinished){
      MongoClient.connect(this.url, function(err, db){
        if(db){
-         var collection = db.collection('diary');
+          console.log('here be db!')
+         var collection = db.collection('entries');
          collection.insert(newEntry);
          collection.find().toArray(function(err, docs){
            onQueryFinished(docs);
@@ -17,3 +18,5 @@ DiaryQuery.prototype = {
      })
    }
 };
+
+module.exports = DiaryQuery;
