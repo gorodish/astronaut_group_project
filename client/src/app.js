@@ -13,9 +13,9 @@ var app = function(){
   var diarySubmit = document.querySelector('#diary-submit');
   var diaryInput = document.querySelector('#diary-input');
   diarySubmit.onclick = function(){
-
-    makePostRequest('/api/diary', diaryInput.value, function(){
-      console.log('yaldi!');
+    var entry = new Diary(diaryInput.value);
+    makePostRequest('/api/diary', entry, function(){
+      console.log(this.responseText);
     })
   }
 }
