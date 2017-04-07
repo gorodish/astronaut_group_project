@@ -45,6 +45,28 @@ var updateRecent = function(){
   
 }
 
+var showAll = function(){
+  var seeAllView = document.querySelector('#see-all-view');
+  seeAllView.style.display = "block";
+  seeAllView.innerText = "";
+  var ul = document.createElement('ul');
+  seeAllView.appendChild(ul);
+  var all = JSON.parse(this.responseText).reverse();
+
+  all.forEach(function(entry){
+    var text = document.createElement('li');
+    text.innerText = entry.text;
+    var date = document.createElement('li');
+    date.innerText = new Date(entry.timeSinceEpoch);
+    var where = document.createElement('li');
+    where.innerText = 'far away';
+    ul.appendChild(text);
+    ul.appendChild(date);
+    ul.appendChild(where);
+  });
+
+}
+
 
 var app = function(){
   var diarySubmit = document.querySelector('#diary-submit');
@@ -60,8 +82,16 @@ var app = function(){
     updateRecent()
   }
 
-  seeAll
-updateRecent();
+  seeAll.onclick = function(){
+    var newEntryView = document.querySelector('#new-entry-view');
+    newEntryView.style.display = "none";
+
+    getAllEntries('/api/diary', showAll);
+   
+
+  }
+
+  updateRecent();
 
 }
 

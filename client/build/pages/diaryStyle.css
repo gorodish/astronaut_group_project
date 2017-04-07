@@ -1,0 +1,7 @@
+ul li {
+  list-style-type: none;
+}
+
+#see-all-view {
+  display: none;
+}
