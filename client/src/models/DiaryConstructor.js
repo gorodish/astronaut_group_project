@@ -1,25 +1,26 @@
 var Diary = function(text){
-  this.timeSinceEpoch = Date.now();
-  this.where = null;
+  this.timeSinceEpoch = Date.now();;
   this.text = text;
 
-  this.setWhere;
+}
+
+var getISSposition = function(callback){
+  var diaryScope = this;
+  var issURL = 'http://api.open-notify.org/iss-now.json';
+  var xhr = new XMLHttpRequest()  ;
+  xhr.open('GET', issURL);
+  xhr.onload = callback;
+  xhr.send();
+}
+
+var updateDiary = function(){
+  var json = JSON.parse(this.responseText);
+  diaryScope.where = json.iss_position;
 }
 
 Diary.prototype = {
   setWhere: function(){
-    var diaryScope = this;
-    var issURL = 'https://api.wheretheiss.at/v1/satellites/25544';
-    var xhr = new XMLHttpRequest()  ;
-    xhr.open('GET', issURL);
-    xhr.onload = function(){
-      var usefulInfo = JSON.parse(this.responseText);
-      diaryScope.where = {
-        lat: usefulInfo[0].latitude,
-        lng: usefulInfo[0].longitude
-      }
-    }
-    xhr.send();
+    getISSposition(updateDiary);
   }
 }
 

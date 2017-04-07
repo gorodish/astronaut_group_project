@@ -33,7 +33,8 @@ var renderEntries = function(array){
     var date = document.createElement('li');
     date.innerText = new Date(entry.timeSinceEpoch);
     var where = document.createElement('li');
-    where.innerText = 'far away';
+    console.log(entry);
+    where.innerText = entry.where;
     recent.appendChild(text);
     recent.appendChild(date);
     recent.appendChild(where);
