@@ -18,6 +18,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){  
+  console.log(req.body);
   query.add(req.body, function(result){
     res.json(result);
   })

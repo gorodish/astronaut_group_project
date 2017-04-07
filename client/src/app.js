@@ -15,7 +15,7 @@ var app = function(){
   diarySubmit.onclick = function(){
     var entry = new Diary(diaryInput.value);
     makePostRequest('/api/diary', entry, function(){
-      console.log(this.responseText);
+      console.log(JSON.parse(this.responseText));
     })
   }
 }
