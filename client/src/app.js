@@ -20,26 +20,40 @@ var getLastXEntries = function(){
   var last = all.length - 1
   last4 = all.slice(last - 3, last + 1).reverse();
 
-  renderEntries(last4);
+  populateRecent(last4);
 }
 
-var renderEntries = function(array){
+
+var renderList = function(array, element){
+  array.forEach(function(entry){
+   var text = document.createElement('li');
+   var diaryText = entry.text;
+   diaryText.length > 140 ? diaryText = diaryText.substring(0,139)+"..." : null;
+   text.innerText = diaryText;
+   element.appendChild(text);
+
+   var childList = document.createElement('ul');
+   text.appendChild(childList);
+
+   var date = document.createElement('li');
+   date.innerText = new Date(entry.timeSinceEpoch);
+   childList.appendChild(date);
+
+   var where = document.createElement('li');
+   where.innerText = 'far away';
+   childList.appendChild(where);
+ })
+}
+
+var populateRecent = function(array){
   var recent = document.querySelector('#recent-entries');
   recent.innerText = "";
 
-  array.forEach(function(entry){
-    var text = document.createElement('li');
-    text.innerText = entry.text;
-    var date = document.createElement('li');
-    date.innerText = new Date(entry.timeSinceEpoch);
-    var where = document.createElement('li');
-    console.log(entry);
-    where.innerText = entry.where;
-    recent.appendChild(text);
-    recent.appendChild(date);
-    recent.appendChild(where);
-  });
-}
+  renderList(array, recent);
+
+  
+};
+
 
 var updateRecent = function(){
   getAllEntries('/api/diary', getLastXEntries);
@@ -48,47 +62,42 @@ var updateRecent = function(){
 
 var showAll = function(){
   var seeAllView = document.querySelector('#see-all-view');
-  seeAllView.style.display = "block";
+  seeAllView.style.display = "flex";
   seeAllView.innerText = "";
   var ul = document.createElement('ul');
   seeAllView.appendChild(ul);
   var all = JSON.parse(this.responseText).reverse();
 
-  all.forEach(function(entry){
-    var text = document.createElement('li');
-    text.innerText = entry.text;
-    var date = document.createElement('li');
-    date.innerText = new Date(entry.timeSinceEpoch);
-    var where = document.createElement('li');
-    where.innerText = 'far away';
-    ul.appendChild(text);
-    ul.appendChild(date);
-    ul.appendChild(where);
-  });
+  renderList(all, ul);
 
 }
-
 
 var app = function(){
   var diarySubmit = document.querySelector('#diary-submit');
   var diaryInput = document.querySelector('#diary-input');
 
-  var seeAll = document.querySelector('#see-all-entries');
+  var seeAll = document.querySelector('#toggle-view');
   
   diarySubmit.onclick = function(){
+    if(!diaryInput.value){
+      alert('You need to type something!');
+      return;
+    }
     var entry = new Diary(diaryInput.value);
+    diaryInput.value = "";  
     makePostRequest('/api/diary', entry, function(){
       console.log(JSON.parse(this.responseText));
     })
-    updateRecent()
+    updateRecent();
   }
 
   seeAll.onclick = function(){
     var newEntryView = document.querySelector('#new-entry-view');
     newEntryView.style.display = "none";
+    seeAll.innerText = 'new entry';
 
     getAllEntries('/api/diary', showAll);
-   
+
 
   }
 
