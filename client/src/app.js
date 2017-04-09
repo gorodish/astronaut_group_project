@@ -56,7 +56,15 @@ var ISSRequestComplete = function(){
   var jsonString = this.responseText;
   var coords = JSON.parse(jsonString);
   var coord = coords.iss_position;
-  populateList(coord);
+  console.log(coord);
+  var center = {lat: Number(coord.latitude), lng: Number(coord.longitude)};
+  // populateList(coord);
+  var container = document.getElementById("main-map");
+  // var center = {lat: 51.5074, lng: 0.1278};
+  var zoom = 1;
+  var mainMap = new MapWrapper(container, center, zoom);
+  mainMap.addMarker(center);
+
 };
 
 var populateList = function(coord){
@@ -71,15 +79,11 @@ var populateList = function(coord){
 
 
 var app = function(){ 
-  var container = document.getElementById("main-map");
-  var center = {lat: 51.5074, lng: 0.1278};
-  var zoom = 10;
-  var mainMap = new MapWrapper(container, center, zoom);
-  mainMap.addMarker(center);
-  mainMap.addClickEvent();
+  // mainMap.addClickEvent();
 
   var url = "http://api.open-notify.org/iss-now.json";
   makeISSRequest(url, ISSRequestComplete);
+  
   
 };
 
