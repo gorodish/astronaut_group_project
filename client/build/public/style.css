@@ -1,3 +1,5 @@
+/* index */
+
 body {
   display: flex;
   flex-direction: column;
@@ -18,4 +20,24 @@ div .container {
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
+  overflow:scroll;
+}
+
+/*diary div*/
+ul li {
+  list-style-type: none;
+}
+
+#new-entry-view {
+  width: 400px;
+}
+
+#see-all-view {
+  display: none;
+}
+
+#diary-input {
+  resize: none;
+  width: 100%;
+  height: 200px;
 }
