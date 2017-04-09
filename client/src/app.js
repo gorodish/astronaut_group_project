@@ -13,7 +13,41 @@ var app = function(){
 
 makeRequest(youTubeUrl, function(){
   var details = JSON.parse(this.responseText);
-  console.log(details.items[0].snippet.title);
+  var results = document.querySelector("#Results");
+  var ul = document.querySelector("#resultsUl");
+  results.appendChild(ul);
+
+ details.items.forEach(function(video){
+  console.log(video);
+
+var a = document.createElement("a");
+var vidId = video.id.videoId;
+a.href = 'https://www.youtube.com/watch?v=' + vidId;
+
+var resultDiv = document.createElement('div');
+resultDiv.setAttribute('class', 'video-link');
+a.appendChild(resultDiv);
+
+  var title = document.createElement("p");
+  title.innerText = video.snippet.title;
+  resultDiv.appendChild(title);
+
+  var thumbnail = document.createElement("p");
+  var img = document.createElement("img");
+  img.src = video.snippet.thumbnails.default.url;
+  thumbnail.appendChild(img);
+  resultDiv.appendChild(thumbnail);
+
+  var description = document.createElement("p");
+  description.innerText = video.snippet.description;
+  resultDiv.appendChild(description);
+
+  results.appendChild(a);
+
+ })
+
+
+
   })
 
 
