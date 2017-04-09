@@ -14,11 +14,11 @@ router.get('/events/', function(req, res){
 });
 
 router.get('/map/', function(req, res){
-  res.sendFile(build + 'pages/events.html');
+  res.sendFile(build + 'pages/map.html');
 });
 
 router.get('/youtube/', function(req, res){
-  res.sendFile(build + 'pages/events.html');
+  res.sendFile(build + 'pages/youtube.html');
 });
 
 router.get('/diary', function(req, res){
