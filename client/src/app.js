@@ -1,108 +1,86 @@
-var Diary = require('./models/DiaryConstructor');
+var MapWrapper = function(container, center, zoom){
+  this.googleMap = new google.maps.Map(container, {
+    center: center,
+    zoom: zoom
+  });
+};
 
-var makePostRequest = function(url, payload, callback){
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', url);
-  xhr.setRequestHeader('content-type', 'application/json');
-  xhr.onload = callback;
-  xhr.send(JSON.stringify(payload));
-}
+MapWrapper.prototype = {
+  addMarker: function(coords){
+    var marker = new google.maps.Marker({
+      position: coords,
+      map: this.googleMap,
+      animation: google.maps.Animation.DROP
+    });
 
-var getAllEntries = function(url, callback){
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url);
-  xhr.onload = callback;
-  xhr.send();
-}
+    var contentString = '<div id="content">'+
+        '<p>Latitude: ' + coords.lat + '</p><p>' + 'Longitude: ' + coords.lng + '</p></div>';
+    var infowindow = new google.maps.InfoWindow({
+       content: contentString
+     });
+    marker.addListener('click', function() {
+      infowindow.open(this.googleMap, marker);
+    }.bind(this));
+  },
+  addClickEvent: function(){
+    google.maps.event.addListener(this.googleMap, "click", function(event){
+    var lat = ("Latitude: ", event.latLng.lat());
+    var lng = ("Longitude: ", event.latLng.lng());
+    this.addMarker({lat: event.latLng.lat(), lng: event.latLng.lng()});
+    }.bind(this));
+  }
+};
 
-var getLastXEntries = function(){
-  var all = JSON.parse(this.responseText);
-  var last = all.length - 1
-  last4 = all.slice(last - 3, last + 1).reverse();
+var makeISSRequest = function(url, callback){
+  //create a new HMLHTTPrequest object
+  var request = new XMLHttpRequest();
 
-  populateRecent(last4);
-}
+  //set type of request, and the url
+  request.open("GET", url);
 
+  //set the callback th`t we want to use when the request is comlete
+  request.onload = callback;
 
-var renderList = function(array, element){
-  array.forEach(function(entry){
-   var text = document.createElement('li');
-   var diaryText = entry.text;
-   diaryText.length > 140 ? diaryText = diaryText.substring(0,139)+"..." : null;
-   text.innerText = diaryText;
-   element.appendChild(text);
+//write an onerror function too
 
-   var childList = document.createElement('ul');
-   text.appendChild(childList);
+  //send the request
+  request.send();
+};
 
-   var date = document.createElement('li');
-   date.innerText = new Date(entry.timeSinceEpoch);
-   childList.appendChild(date);
+var ISSRequestComplete = function(){
+  if(this.status !== 200){
+    return;
+  }
 
-   var where = document.createElement('li');
-   where.innerText = 'far away';
-   childList.appendChild(where);
- })
-}
+  // grab the response text
+  var jsonString = this.responseText;
+  var coords = JSON.parse(jsonString);
+  var coord = coords.iss_position;
+  populateList(coord);
+};
 
-var populateRecent = function(array){
-  var recent = document.querySelector('#recent-entries');
-  recent.innerText = "";
+var populateList = function(coord){
+  var ul = document.getElementById("coords");
+  var li = document.createElement('li');
+  li.innerText = coord.latitude;
+  li.innerText = coord.longitude;
 
-  renderList(array, recent);
+  ul.appendChild(li);
 
-  
 };
 
 
-var updateRecent = function(){
-  getAllEntries('/api/diary', getLastXEntries);
+var app = function(){ 
+  var container = document.getElementById("main-map");
+  var center = {lat: 51.5074, lng: 0.1278};
+  var zoom = 10;
+  var mainMap = new MapWrapper(container, center, zoom);
+  mainMap.addMarker(center);
+  mainMap.addClickEvent();
+
+  var url = "http://api.open-notify.org/iss-now.json";
+  makeISSRequest(url, ISSRequestComplete);
   
-}
-
-var showAll = function(){
-  var seeAllView = document.querySelector('#see-all-view');
-  seeAllView.style.display = "flex";
-  seeAllView.innerText = "";
-  var ul = document.createElement('ul');
-  seeAllView.appendChild(ul);
-  var all = JSON.parse(this.responseText).reverse();
-
-  renderList(all, ul);
-
-}
-
-var app = function(){
-  var diarySubmit = document.querySelector('#diary-submit');
-  var diaryInput = document.querySelector('#diary-input');
-
-  var seeAll = document.querySelector('#toggle-view');
-  
-  diarySubmit.onclick = function(){
-    if(!diaryInput.value){
-      alert('You need to type something!');
-      return;
-    }
-    var entry = new Diary(diaryInput.value);
-    diaryInput.value = "";  
-    makePostRequest('/api/diary', entry, function(){
-      console.log(JSON.parse(this.responseText));
-    })
-    updateRecent();
-  }
-
-  seeAll.onclick = function(){
-    var newEntryView = document.querySelector('#new-entry-view');
-    newEntryView.style.display = "none";
-    seeAll.innerText = 'new entry';
-
-    getAllEntries('/api/diary', showAll);
-
-
-  }
-
-  updateRecent();
-
-}
+};
 
 window.onload = app;
