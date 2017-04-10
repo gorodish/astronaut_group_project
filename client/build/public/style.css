@@ -39,6 +39,7 @@ ul li {
 }
 
 #new-entry-view {
+  display: block;
   width: 400px;
 }
 

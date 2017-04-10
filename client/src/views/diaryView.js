@@ -62,8 +62,6 @@ var updateRecent = function(){
 
 var showAll = function(){
   var seeAllView = document.querySelector('#see-all-view');
-  seeAllView.style.display = "flex";
-  seeAllView.innerText = "";
   var ul = document.createElement('ul');
   seeAllView.appendChild(ul);
   var all = JSON.parse(this.responseText).reverse();
@@ -76,7 +74,8 @@ var diaryView = function(){
   var diarySubmit = document.querySelector('#diary-submit');
   var diaryInput = document.querySelector('#diary-input');
 
-  var seeAll = document.querySelector('#toggle-view');
+  var seeAll = document.querySelector('#toggle-to-all');
+  var toggleToNew = document.querySelector('#toggle-to-new');
   
   diarySubmit.onclick = function(){
     if(!diaryInput.value){
@@ -88,19 +87,27 @@ var diaryView = function(){
     diaryInput.value = "";  
     entry.setWhere(function(){
       makePostRequest('/api/diary', entry, updateRecent);
-
-
-    });
-
+    }); 
   };
+
+  getAllEntries('/api/diary', showAll);
 
 
   seeAll.onclick = function(){
     var newEntryView = document.querySelector('#new-entry-view');
-    newEntryView.style.display = "none";
-    seeAll.innerText = 'new entry';
+    var seeAllView = document.querySelector('#see-all-view');
 
-    getAllEntries('/api/diary', showAll);
+    newEntryView.style.display = "none";
+    seeAllView.style.display = "block";
+
+  }
+
+  toggleToNew.onclick = function(){
+    var newEntryView = document.querySelector('#new-entry-view');
+    var seeAllView = document.querySelector('#see-all-view');
+
+    newEntryView.style.display = "block";
+    seeAllView.style.display = "none";
   }
   updateRecent();
 }
