@@ -56,30 +56,9 @@ var ISSRequestComplete = function(){
   var container = document.querySelector("#main-map");
   var zoom = 3;
   var mainMap = new MapWrapper(container, center, zoom);
-
-
-  console.log(coord);
- 
   mainMap.addMarker(center);
 
 };
-
-
-
-function get_latest_position() {
-    $.getJSON('http://api.open-notify.org/iss-now.json', function(data, status) {
-        position = data.iss_position;
-        var latlng = new google.maps.LatLng(position.latitude, position.longitude);
-        map.setCenter(latlng);
-        marker.setPosition(latlng);
-        draw_flight_path(latlng);
-    });
-};
-
-
-
-
-
 
 
 var populateList = function(coord){
@@ -97,16 +76,10 @@ var populateList = function(coord){
 var mapView = function(){ 
 
   var url = "http://api.open-notify.org/iss-now.json";
-  // makeISSRequest(url, ISSRequestComplete);
+  makeISSRequest(url, ISSRequestComplete);
 
-  var intervalID = window.setInterval(myCallback, 1000);
-
-  function myCallback() {
-    makeISSRequest(url, ISSRequestComplete);
-  }
-setInterval(get_latest_position, 1000);
+  // setInterval(makeISSRequest(url, ISSRequestComplete), 1000);
   
-    
 };
 
 module.exports = mapView;
