@@ -27,13 +27,17 @@ var getLastXEntries = function(){
 var renderList = function(array, element){
   array.forEach(function(entry){
    var text = document.createElement('li');
+   text.classList.add('diary-text');
+
    var diaryText = entry.text;
    diaryText.length > 140 ? diaryText = diaryText.substring(0,139)+"..." : null;
    text.innerText = diaryText;
    element.appendChild(text);
 
    var childList = document.createElement('ul');
+   childList.classList.add('diary-metadata');
    text.appendChild(childList);
+
 
    var date = document.createElement('li');
    date.innerText = new Date(entry.timeSinceEpoch);
