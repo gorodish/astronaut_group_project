@@ -5,6 +5,7 @@
 var clockView = function(){
   var headingClock = document.querySelector('#heading-clock');
   var ul = document.createElement('ul');
+  ul.id = 'clocks-list';
 
   headingClock.appendChild(ul);
 

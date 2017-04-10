@@ -3,7 +3,7 @@ a,
 a:link,
 a:visited {
   text-decoration: none;
-  color: saddlebrown;
+  color: #007CFF;
 }
 
 a:hover,
@@ -18,7 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
-  background-color: saddlebrown;
+  background-color: #007CFF;
 }
 
 #module-container {
@@ -30,37 +30,59 @@ body {
 }
 
 div .container {
-  background-color: darkgoldenrod;
+  background-color: #A0CBFF;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
   margin: 5px;
-  padding: 5px;
+  padding: 15px;
   overflow:scroll;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 
 /* heading div */
 #header-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: saddlebrown;
-  color: darkgoldenrod;
+  background-color: #007CFF;
+  color: #A0CBFF;
+}
+
+#heading {
+  padding: 10px;
 }
 /* clock div */
+#clocks-list{
+  display: flex;
+  flex-direction: row;
+}
+
+#clocks-list li{
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+}
+
 #heading-clock {
-  background-color: darkgoldenrod;
-  color: saddlebrown;
+  list-style-type: none;
+  background-color: #A0CBFF;
+  color: #007CFF;
+
+  border-radius: 10px;
 }
 /*diary div*/
 ul li {
   list-style-type: none;
+  margin-left: 0px;
 
 }
 
 .diary-text {
-  font-family: cursive;
+  font-family: 'Noto Serif', serif;
 }
 
 .diary-metadata {
@@ -82,6 +104,13 @@ ul li {
   width: 100%;
   height: 200px;
   border-radius: 10px;
+  font-size: large;
+  font-family: 'Noto Serif', serif;
+
+  padding:5px;
+  width: 90%;
+  border: none;
+  border-radius: 10px;
 }
 
 /*youtube div*/
@@ -89,6 +118,14 @@ ul li {
   border: 1px solid black;
   margin-bottom: 10px;
   padding: 5px;
+}
+
+#SearchField {
+  border-radius: 10px;
+  font-size: large;
+  padding:5px;
+  width: 90%;
+  border: none;
 }
 
 /*map div*/
