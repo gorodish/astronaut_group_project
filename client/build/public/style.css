@@ -15,14 +15,24 @@ body {
 }
 
 div .container {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
   overflow:scroll;
 }
 
+/* heading div */
+#header-container {
+  display: flex;
+  align-items: center;
+}
+/* clock div */
+#heading-clock {
+  background-color: darkgoldenrod;
+  color: saddlebrown;
+}
 /*diary div*/
 ul li {
   list-style-type: none;
