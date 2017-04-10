@@ -1,0 +1,56 @@
+/* index */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#module-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+div .container {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+  overflow:scroll;
+}
+
+/*diary div*/
+ul li {
+  list-style-type: none;
+}
+
+#new-entry-view {
+  width: 400px;
+}
+
+#see-all-view {
+  display: none;
+}
+
+#diary-input {
+  resize: none;
+  width: 100%;
+  height: 200px;
+}
+
+/*youtube div*/
+.video-link {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+/*map div*/
+#main-map {
+  height: 500px;
+  width: 500px;
+}
