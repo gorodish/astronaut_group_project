@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>AstroBoard</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="public/style.css">
   <script type="text/javascript" src="bundle.js"></script>  
 </head>
 <body>
@@ -27,19 +27,25 @@
 
     <div class="container" id="youtube">
 
-      <a href="/youtube">YouTube</a>
+      <input id="SearchField" type="text" placeholder="Search Results"/>
+      <button id ="SubmitBtn"> Search</button>
+      <div id="Results"> 
 
+        <ul id="resultsUl">
+        </ul>
+
+      </div>
     </div>
-    
+
     <div class="container" id="diary">
       <div id="new-entry-view">
-      <textarea id="diary-input" placeholder="Captain's Log..." required="true"></textarea>
-      <button id="diary-submit">Make it so!</button>
-      <ul id="recent-entries">recent stuff</ul>
+        <textarea id="diary-input" placeholder="Captain's Log..." required="true"></textarea>
+        <button id="diary-submit">Make it so!</button>
+        <ul id="recent-entries">recent stuff</ul>
       </div>
 
       <div id="see-all-view">
-      hiya!
+        hiya!
       </div>
 
       <button id="toggle-view">see all</button>
