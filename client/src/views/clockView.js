@@ -26,7 +26,7 @@ var clockView = function(){
     utcDate.innerText = 'Date (UTC): ' + epochTime.toLocaleDateString();
     utcTime.innerText = 'UTC: ' + epochTime.toLocaleTimeString('UTC', {timeZone: 'UTC'});
     moskovskoeVremya.innerText = 'Москва: ' + epochTime.toLocaleTimeString('ru-RU', {timeZone: 'Europe/Moscow'});
-    houstonTime.innerText = 'Houston: ' + epochTime.toLocaleTimeString('en-US', {timeZone: 'CDT'});
+    houstonTime.innerText = 'Houston: ' + epochTime.toLocaleTimeString('en-US', {timeZone: 'America/Chicago'});
   }, 1000)
 }
 
