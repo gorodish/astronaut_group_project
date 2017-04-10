@@ -23,6 +23,16 @@ div .container {
   overflow:scroll;
 }
 
+/* heading div */
+#header-container {
+  display: flex;
+  align-items: center;
+}
+/* clock div */
+#heading-clock {
+  background-color: darkgoldenrod;
+  color: saddlebrown;
+}
 /*diary div*/
 ul li {
   list-style-type: none;
