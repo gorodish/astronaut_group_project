@@ -15,6 +15,7 @@ makeRequest(youTubeUrl, function(){
   var details = JSON.parse(this.responseText);
   var results = document.querySelector("#Results");
   var ul = document.querySelector("#resultsUl");
+  results.innerText = "";
   results.appendChild(ul);
 
  details.items.forEach(function(video){
