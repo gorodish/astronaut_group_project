@@ -40,7 +40,7 @@ var renderList = function(array, element){
    childList.appendChild(date);
 
    var where = document.createElement('li');
-   where.innerText = 'far away';
+   where.innerText = entry.where.latitude + entry.where.longitude;
    childList.appendChild(where);
  })
 }
@@ -84,12 +84,16 @@ var diaryView = function(){
       return;
     }
     var entry = new Diary(diaryInput.value);
+
     diaryInput.value = "";  
-    makePostRequest('/api/diary', entry, function(){
-      console.log(JSON.parse(this.responseText));
-    })
-    updateRecent();
-  }
+    entry.setWhere(function(){
+      makePostRequest('/api/diary', entry, updateRecent);
+
+
+    });
+
+  };
+
 
   seeAll.onclick = function(){
     var newEntryView = document.querySelector('#new-entry-view');
@@ -97,12 +101,10 @@ var diaryView = function(){
     seeAll.innerText = 'new entry';
 
     getAllEntries('/api/diary', showAll);
-
-
   }
-
   updateRecent();
-
 }
+
+
 
 module.exports = diaryView;
