@@ -7,10 +7,11 @@ var MapWrapper = function(container, center, zoom){
 
 MapWrapper.prototype = {
   addMarker: function(coords){
+    var image = {url: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6kJu216KKbo76tEoGEf49WnRAWVBLVJWBi4WaBsqzD6rePvWDvA', size: new google.maps.Size(30, 30)};
     var marker = new google.maps.Marker({
       position: coords,
       map: this.googleMap,
-      animation: google.maps.Animation.DROP
+      icon: image
     });
 
     var contentString = '<div id="content">'+
@@ -20,13 +21,6 @@ MapWrapper.prototype = {
      });
     marker.addListener('click', function() {
       infowindow.open(this.googleMap, marker);
-    }.bind(this));
-  },
-  addClickEvent: function(){
-    google.maps.event.addListener(this.googleMap, "click", function(event){
-    var lat = ("Latitude: ", event.latLng.lat());
-    var lng = ("Longitude: ", event.latLng.lng());
-    this.addMarker({lat: event.latLng.lat(), lng: event.latLng.lng()});
     }.bind(this));
   }
 };
@@ -38,7 +32,7 @@ var makeISSRequest = function(url, callback){
   //set type of request, and the url
   request.open("GET", url);
 
-  //set the callback th`t we want to use when the request is comlete
+  //set the callback that we want to use when the request is comlete
   request.onload = callback;
 
 //write an onerror function too
@@ -58,12 +52,14 @@ var ISSRequestComplete = function(){
   var coord = coords.iss_position;
   console.log(coord);
   var center = {lat: Number(coord.latitude), lng: Number(coord.longitude)};
-  // populateList(coord);
   var container = document.querySelector("#main-map");
-  // var center = {lat: 51.5074, lng: 0.1278};
-  var zoom = 1;
+  var zoom = 3;
   var mainMap = new MapWrapper(container, center, zoom);
   mainMap.addMarker(center);
+
+};
+
+function getLatestPosition() {
 
 };
 
@@ -79,12 +75,17 @@ var populateList = function(coord){
 
 
 var mapView = function(){ 
-  // mainMap.addClickEvent();
 
   var url = "http://api.open-notify.org/iss-now.json";
   makeISSRequest(url, ISSRequestComplete);
+
+  // var intervalID = window.setInterval(myCallback, 5000);
+
+  // function myCallback() {
+  //   makeISSRequest(url, ISSRequestComplete);
+  // }
   
-  
+    
 };
 
 module.exports = mapView;
