@@ -7,7 +7,7 @@ var MapWrapper = function(container, center, zoom){
 
 MapWrapper.prototype = {
   addMarker: function(coords){
-    var image = {url: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6kJu216KKbo76tEoGEf49WnRAWVBLVJWBi4WaBsqzD6rePvWDvA', size: new google.maps.Size(30, 30)};
+    var image = {url: '../public/images/imageedit_6_4289386805.jpg', size: new google.maps.Size(47, 38)};
     var marker = new google.maps.Marker({
       position: coords,
       map: this.googleMap,
@@ -47,10 +47,11 @@ var ISSRequestComplete = function(){
   }
 
   // grab the response text
+
+
   var jsonString = this.responseText;
   var coords = JSON.parse(jsonString);
   var coord = coords.iss_position;
-  console.log(coord);
   var center = {lat: Number(coord.latitude), lng: Number(coord.longitude)};
   var container = document.querySelector("#main-map");
   var zoom = 3;
@@ -59,9 +60,6 @@ var ISSRequestComplete = function(){
 
 };
 
-function getLatestPosition() {
-
-};
 
 var populateList = function(coord){
   var ul = document.getElementById("coords");
@@ -74,18 +72,14 @@ var populateList = function(coord){
 };
 
 
+
 var mapView = function(){ 
 
   var url = "http://api.open-notify.org/iss-now.json";
   makeISSRequest(url, ISSRequestComplete);
 
-  // var intervalID = window.setInterval(myCallback, 5000);
-
-  // function myCallback() {
-  //   makeISSRequest(url, ISSRequestComplete);
-  // }
+  // setInterval(makeISSRequest(url, ISSRequestComplete), 1000);
   
-    
 };
 
 module.exports = mapView;
