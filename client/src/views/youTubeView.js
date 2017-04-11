@@ -22,6 +22,7 @@ var completeRequest = function(){
     a.href = 'https://www.youtube.com/watch?v=' + vidId;
 
     var resultDiv = document.createElement('div');
+    resultDiv.classList.add('yt-search-result');
     resultDiv.setAttribute('class', 'video-link');
     a.appendChild(resultDiv);
 

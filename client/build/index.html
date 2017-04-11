@@ -10,105 +10,117 @@
 <body>
 
 
-<div id='header-container'>
-  <h1 id="heading">Международная космическая станция </h1>
-  <h1 id="name-heading"> Hello Muryanjo</h1>
-  <div id="heading-clock">
-  </div>
+  <div id='header-container'>
+    <h1 id="heading">Международная космическая станция </h1>
+    <h1 id="name-heading"> Hello Muryanjo</h1>
+    <div id="heading-clock"></div>
 
 
-<div id="clockdiv">
-<h1 id="countdown">Next Human Contact</h1>
-  <div>
-    <span class="days"></span>
-    <div class="smalltext">Days</div>
+    <div id="clockdiv">
+      <h1 id="countdown">Next Human Contact</h1>
+      <div>
+        <span class="days"></span>
+        <div class="smalltext">Days</div>
+      </div>
+      <div>
+        <span class="hours"></span>
+        <div class="smalltext">Hours</div>
+      </div>
+      <div>
+        <span class="minutes"></span>
+        <div class="smalltext">Minutes</div>
+      </div>
+      <div>
+        <span class="seconds"></span>
+        <div class="smalltext">Seconds</div>
+      </div>
+    </div>
   </div>
-  <div>
-    <span class="hours"></span>
-    <div class="smalltext">Hours</div>
-  </div>
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Seconds</div>
-  </div>
-</div>
 
 
   <div id="module-container">
 
     <div class="container" id="events">
-      <div id="home_news">
-<<<<<<< HEAD
-        <h1>G-News</h1>
-        <ul id="home_news_results">
-        </ul>
-      </div>
-
-      <div id="search_news">
-        <h1>News Search</h1>
-        <input id="input_search_news" type="text" />
-=======
-        <div id="news-header">
-          <h1 id="g-heading">G-News</h1>
-          </div>
-          <ul id="home_news_results">
-          </ul>
+      <div class="module-header">
+        <div class="module-header-text">
+          G-News
         </div>
+        <div class="module-header-icon">
+          <img src="./public/images/news-3.png"/>
+        </div>
+      </div>
+      <ul id="home_news_results"></ul>
+      <div id="search_news">
 
-        <div id="search_news">
-          <h1 id="news-heading">News Search</h1>
-          <input id="input_search_news" type="text" />
->>>>>>> feature/clock
+        <div class='module-header-text'>News Search</div>
+        <input id="input_search_news" type="text" />
 
         <button id='search'>search</button>
       </div>
-
       <div id="other_news">
-        <ul id="other_news_results">
-        </div>
-      </div>
-
-      <div class="container" id="map">
-        <div id="main-map"></div>
-      </div>
-
-
-      <div class="container" id="youtube">
-
-        <input id="SearchField" type="text" placeholder="Search Results"/>
-        <button id ="SubmitBtn"> Search</button>
-        <div id="Results"> 
-
-          <ul id="resultsUl">
-          </ul>
-
-        </div>
-      </div>
-
-      <div class="container" id="diary">
-        <div id="new-entry-view">
-          <textarea id="diary-input" placeholder="Captain's Log..." required="true"></textarea>
-          <button id="diary-submit">Make it so!</button>
-          <ul id="recent-entries">recent stuff</ul>
-          <button id="toggle-to-all">see all</button>
-        </div>
-
-        <div id="see-all-view">
-          <button id="toggle-to-new">add new</button>
-        </div>
+        <ul id="other_news_results"></ul>
       </div>
     </div>
-  </body>
-  </html>
 
-<!--
-  <input type='text' id="diary-input" placeholder="Captain's Log..."></input>
-  <button id="diary-submit">Make it so!</button>
-  <div id="recent-entries">recent stuff</div>
-  <div id="see-all-entries">see all</div>
 
--->
+
+    <div class="container" id="map">
+      <div class="module-header">
+        <div class="module-header-text">
+          Where am I?
+        </div>
+        <div class="module-header-icon">
+          <img src="./public/images/international.png"/>
+        </div>
+      </div>
+      <div id="main-map"></div>
+    </div>
+
+
+
+    <div class="container" id="youtube">
+      <div class="module-header">
+        <div class="module-header-text">
+          YouTube
+        </div>
+        <div class="module-header-icon">
+          <img src="./public/images/video-player.png"/>
+        </div>
+      </div>
+
+      <div class="youtube-items">
+        <input id="SearchField" type="text" placeholder="Search Results"/>
+        <button id ="SubmitBtn"> Search</button>
+      </div>
+      <div id="Results"> 
+        <ul id="resultsUl"></ul> 
+      </div>
+    </div>
+
+
+
+
+  <div class="container" id="diary">
+    <div class="module-header">
+      <div class="module-header-text">
+        Dear diary...
+      </div>
+      <div class="module-header-icon">
+        <img src="./public/images/notebook.png"/>
+      </div>
+    </div>
+    <div id="new-entry-view">
+      <textarea id="diary-input" placeholder="Captain's Log..." required="true"></textarea>
+      <button id="diary-submit">Make it so!</button>
+      <ul id="recent-entries">recent stuff</ul>
+      <button id="toggle-to-all">see all</button>
+    </div>
+
+    <div id="see-all-view">
+      <button id="toggle-to-new">add new</button>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

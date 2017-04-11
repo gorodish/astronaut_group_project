@@ -36,7 +36,7 @@ body {
 div .container {
   background-color: #A0CBFF;
   width: 400px;
-  height: 600px;
+  /*height: 600px;*/
   margin: 5px;
   padding: 15px;
   overflow:scroll;
@@ -44,10 +44,32 @@ div .container {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /*align-items: center;*/
 
   /*background-color: white;*/
 
+}
+
+#search_news {
+  width: 100%;
+}
+
+
+
+.module-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  margin: 15px 0 15px;
+}
+
+.module-header-text {
+  font-size: 2em;
+}
+.module-header-icon img {
+  width: 90px;
 }
 
 /* heading div */
@@ -146,6 +168,13 @@ ul li {
   padding:5px;
   width: 90%;
   border: none;
+}
+
+.youtube-items {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*map div*/
