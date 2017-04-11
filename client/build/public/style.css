@@ -4,6 +4,8 @@ a:link,
 a:visited {
   text-decoration: none;
   color: #007CFF;
+  transition: all 0.3s ease-in-out;
+
 }
 
 a:hover,
