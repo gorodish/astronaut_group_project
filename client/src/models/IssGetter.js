@@ -9,7 +9,6 @@ IssGetter.prototype = {
     var request = new XMLHttpRequest();
     request.open("GET", url);
     request.onload = function(){
-      console.log(this.responseText);
       var jsonString = this.responseText;
       var coords = JSON.parse(jsonString);
       var coord = {

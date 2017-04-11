@@ -55,8 +55,12 @@ div .container {
 
 }
 
-#search_news {
-  width: 100%;
+.search-input {
+  border-radius: 10px;
+  font-size: large;
+  padding:5px;
+  width: 90%;
+  border: none;
 }
 
 
@@ -171,11 +175,7 @@ ul li {
 }
 
 #SearchField {
-  border-radius: 10px;
-  font-size: large;
-  padding:5px;
-  width: 90%;
-  border: none;
+
 }
 
 .youtube-items {

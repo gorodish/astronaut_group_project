@@ -15,8 +15,6 @@ var completeRequest = function(){
 
 
   details.items.forEach(function(video){
-    console.log(video);
-
     var a = document.createElement("a");
     var vidId = video.id.videoId;
     a.href = 'https://www.youtube.com/watch?v=' + vidId;

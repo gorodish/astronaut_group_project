@@ -24,13 +24,17 @@ var getLastXEntries = function(){
 }
 
 
-var renderList = function(array, element){
+var renderList = function(array, element, short){
   array.forEach(function(entry){
    var text = document.createElement('li');
    text.classList.add('diary-text');
 
    var diaryText = entry.text;
-   diaryText.length > 140 ? diaryText = diaryText.substring(0,139)+"..." : null;
+
+   if(short){
+     diaryText.length > 140 ? diaryText = diaryText.substring(0,139)+"..." : null;
+   };
+
    text.innerText = diaryText;
    element.appendChild(text);
 
@@ -49,11 +53,12 @@ var renderList = function(array, element){
  })
 }
 
+
 var populateRecent = function(array){
   var recent = document.querySelector('#recent-entries');
   recent.innerText = "";
 
-  renderList(array, recent);
+  renderList(array, recent, true);
 
   
 };
@@ -94,7 +99,7 @@ var diaryView = function(){
     }); 
   };
 
-  getAllEntries('/api/diary', showAll);
+  
 
 
   seeAll.onclick = function(){
@@ -103,6 +108,7 @@ var diaryView = function(){
 
     newEntryView.style.display = "none";
     seeAllView.style.display = "block";
+    getAllEntries('/api/diary', showAll);
 
   }
 

@@ -16,7 +16,6 @@ Diary.prototype = {
     xhr.open('GET', issURL);
     xhr.onload = function(){
       var json = JSON.parse(this.responseText);
-      console.log(json);
       diaryScope.where = {
         lat: json.latitude,
         lng: json.longitude
