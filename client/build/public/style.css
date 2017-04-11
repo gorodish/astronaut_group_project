@@ -17,8 +17,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   font-family: 'Montserrat', sans-serif;
   background-color: #007CFF;
+
+  background-image: url("http://www.wallpapers-web.com/data/out/167/5264025-real-space-wallpapers.jpg");
+
 }
 
 #module-container {
@@ -36,16 +40,20 @@ div .container {
   margin: 5px;
   padding: 15px;
   overflow:scroll;
+
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: white;
 
 }
 
 /* heading div */
 #header-container {
   display: flex;
+
   flex-direction: column;
   align-items: center;
   background-color: #007CFF;
@@ -54,7 +62,16 @@ div .container {
 
 #heading {
   padding: 10px;
+
+  align-items: left;
+  background-color: white;
 }
+
+#name-heading {
+text-align: center;
+
+}
+
 /* clock div */
 #clocks-list{
   display: flex;
@@ -132,4 +149,65 @@ ul li {
 #main-map {
   height: 100%;
   width: 100%;
+}
+
+#news-header {
+  display: flex;
+  align-items: center;
+  background-color: darkgoldenrod;
+}
+
+#g-heading, #news-heading {
+  text-align: center;
+}
+
+/*div .countdown-container {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+  overflow:scroll;
+}*/
+
+#countdown-body{
+    text-align: center;
+    background: darkgoldenrod;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+#countdown{
+  color: darkgoldenrod;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: darkgoldenrod;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: saddlebrown;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
 }

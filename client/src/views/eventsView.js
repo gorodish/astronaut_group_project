@@ -7,7 +7,6 @@ var makeRequest = function(url, callback) {
 
 
 var requestComplete = function() {
-  console.log("working");
   if(this.status !== 200) {
     return;
   }
@@ -15,7 +14,6 @@ var requestComplete = function() {
   var jsonString = this.responseText;
   var localNews = JSON.parse(jsonString).response.results;
   showLocalNews(localNews);
-  console.log(localNews);
   
 };
 
