@@ -76,20 +76,21 @@ div .container {
 /* heading div */
 #header-container {
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: column;
   align-items: center;
-  /*background-color: #007CFF;*/
-  /*color: #A0CBFF;*/
+  justify-content: space-between; 
+  padding: 7px;
+  background-color: #A0CBFF;
+  opacity: 0.8;
+  border-radius: 15px;
 }
 
 #heading {
   padding: 10px;
-  /*font-size: x-large;*/
   font-size: 3em;
   align-items: left;
-  background-color: white;
-  opacity: 0.4;
+  font-weight: lighter;
 }
 
 #name-heading {
@@ -101,19 +102,21 @@ text-align: center;
 #clocks-list{
   display: flex;
   flex-direction: row;
+  background-color: #007CFF;
+  color: #A0CBFF;
 }
 
 #clocks-list li{
   padding: 10px;
   margin: 5px;
   width: 200px;
+
 }
 
 #heading-clock {
   list-style-type: none;
   background-color: #A0CBFF;
   color: #007CFF;
-
   border-radius: 10px;
 }
 /*diary div*/
