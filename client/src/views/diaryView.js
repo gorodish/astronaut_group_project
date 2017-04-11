@@ -44,7 +44,7 @@ var renderList = function(array, element){
    childList.appendChild(date);
 
    var where = document.createElement('li');
-   where.innerText = entry.where.latitude + entry.where.longitude;
+   where.innerText = entry.where.lat + ", " + entry.where.lng;
    childList.appendChild(where);
  })
 }

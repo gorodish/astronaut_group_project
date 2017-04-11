@@ -8,7 +8,7 @@ var Diary = function(text){
 
 Diary.prototype = {
   setWhere: function(callback){
-    var issURL = 'http://api.open-notify.org/iss-now.json';
+    var issURL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
     var diaryScope = this;
 
@@ -16,12 +16,21 @@ Diary.prototype = {
     xhr.open('GET', issURL);
     xhr.onload = function(){
       var json = JSON.parse(this.responseText);
-      diaryScope.where = json.iss_position;
+      console.log(json);
+      diaryScope.where = {
+        lat: json.latitude,
+        lng: json.longitude
+      };
+
       callback();
     };
     xhr.send();
     // getISSposition(updateDiary);
-  }
+  },
+
+
+
+
 }
 
 module.exports = Diary;
