@@ -19,10 +19,10 @@ body {
   align-items: center;
 
   font-family: 'Montserrat', sans-serif;
-  background-color: #007CFF;
+
 
   background-image: url("http://www.wallpapers-web.com/data/out/167/5264025-real-space-wallpapers.jpg");
-
+  color: #007CFF;
 }
 
 #module-container {
@@ -35,8 +35,8 @@ body {
 
 div .container {
   background-color: #A0CBFF;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 600px;
   margin: 5px;
   padding: 15px;
   overflow:scroll;
@@ -46,7 +46,7 @@ div .container {
   flex-direction: column;
   align-items: center;
 
-  background-color: white;
+  /*background-color: white;*/
 
 }
 
@@ -56,15 +56,17 @@ div .container {
 
   flex-direction: column;
   align-items: center;
-  background-color: #007CFF;
-  color: #A0CBFF;
+  /*background-color: #007CFF;*/
+  /*color: #A0CBFF;*/
 }
 
 #heading {
   padding: 10px;
-
+  /*font-size: x-large;*/
+  font-size: 3em;
   align-items: left;
   background-color: white;
+  opacity: 0.4;
 }
 
 #name-heading {
@@ -110,6 +112,7 @@ ul li {
 #new-entry-view {
   display: block;
   width: 400px;
+  color: #007CFF;
 }
 
 #see-all-view {
