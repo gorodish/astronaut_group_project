@@ -29,8 +29,9 @@ body {
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  /*align-items: center;*/
+  justify-content: center;
+  padding: 25px;
 }
 
 div .container {
@@ -75,7 +76,7 @@ div .container {
 /* heading div */
 #header-container {
   display: flex;
-
+  width: 100%;
   flex-direction: column;
   align-items: center;
   /*background-color: #007CFF;*/
@@ -178,6 +179,22 @@ ul li {
 }
 
 /*map div*/
+div .map-container {
+  background-color: #A0CBFF;
+  width: 400px;
+  height: 600px;
+  margin: 5px;
+  padding: 15px;
+  overflow:scroll;
+
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+
+  /*background-color: white;*/
+}
+
 #main-map {
   height: 100%;
   width: 100%;
