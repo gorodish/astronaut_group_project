@@ -78,6 +78,8 @@ var clockView = function(){
 
   initializeClock('clockdiv', deadline);
 
+  }, 1000)
+
 }
 
 module.exports = clockView;
