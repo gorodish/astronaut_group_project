@@ -23,8 +23,6 @@ body {
   align-items: center;
 
   font-family: 'Montserrat', sans-serif;
-
-
   background-image: url("http://www.wallpapers-web.com/data/out/167/5264025-real-space-wallpapers.jpg");
   color: #007CFF;
 }
@@ -81,7 +79,7 @@ div .container {
 /* heading div */
 #header-container {
   display: flex;
-  width: 80%;
+  width: 1000px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between; 
@@ -134,7 +132,7 @@ ul li {
 
 .diary-text {
   font-family: 'Noto Serif', serif;
-  padding: 10px;
+  padding: 15px;
 }
 
 .diary-metadata {
@@ -219,15 +217,6 @@ div .map-container {
 #search_news{
   width: 100%;
 }
-
-/*div .countdown-container {
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
-  margin: 5px;
-  padding: 5px;
-  overflow:scroll;
-}*/
 
 #countdown-body{
     text-align: center;

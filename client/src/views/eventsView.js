@@ -66,6 +66,10 @@ var eventsView = function() {
 
   textInput.onkeypress = function(event){
     if(event.which === 13){
+      if(!textInput.value){
+        alert('No search input...');
+        return;
+      }
       var searchWord = textInput.value;
       var urlOtherNews = "http://content.guardianapis.com/search?api-key=bb37eb6c-2326-4f29-8c7e-242fa3f40114&q=" + searchWord;
       makeRequest(urlOtherNews, requestCompleteOtherNews);

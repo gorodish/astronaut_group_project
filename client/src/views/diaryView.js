@@ -50,6 +50,9 @@ var renderList = function(array, element, short){
    var where = document.createElement('li');
    where.innerText = entry.where.lat + ", " + entry.where.lng;
    childList.appendChild(where);
+
+   var hr = document.createElement('hr');
+   element.appendChild(hr);
  })
 }
 

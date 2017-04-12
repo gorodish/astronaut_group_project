@@ -53,6 +53,10 @@ var youtube = function(){
 
   input.onkeypress = function(event){
     if(event.which === 13){
+      if(!input.value){
+        alert("No Sheeran allowed!");
+        return;
+      };
         var youTubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD-DrQFCTZv7slK1SPSJa3QQCrgDHIC3q8&q=' + input.value;
 
         makeRequest(youTubeUrl, completeRequest);
