@@ -43,14 +43,21 @@ var completeRequest = function(){
 }
 
 var youtube = function(){
-  var btn = document.querySelector("#SubmitBtn");
+  // var btn = document.querySelector("#SubmitBtn");
   var input = document.querySelector("#SearchField");
-  btn.onclick = function(){
-    var youTubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD-DrQFCTZv7slK1SPSJa3QQCrgDHIC3q8&q=' + input.value;
+  // btn.onclick = function(){
+  //   var youTubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD-DrQFCTZv7slK1SPSJa3QQCrgDHIC3q8&q=' + input.value;
 
-    makeRequest(youTubeUrl, completeRequest);
+  //   makeRequest(youTubeUrl, completeRequest);
+  // }
+
+  input.onkeypress = function(event){
+    if(event.which === 13){
+        var youTubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD-DrQFCTZv7slK1SPSJa3QQCrgDHIC3q8&q=' + input.value;
+
+        makeRequest(youTubeUrl, completeRequest);
+    }
   }
-
   var youTubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD-DrQFCTZv7slK1SPSJa3QQCrgDHIC3q8&q=space';
   makeRequest(youTubeUrl, completeRequest);
 }

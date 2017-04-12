@@ -41,7 +41,6 @@ body {
 div .container {
   background-color: #A0CBFF;
   width: 400px;
-  /*height: 600px;*/
   margin: 5px;
   padding: 15px;
   overflow:scroll;
@@ -49,10 +48,7 @@ div .container {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
-
-  /*background-color: white;*/
-
+  align-items: center;
 }
 
 .search-input {
@@ -113,6 +109,7 @@ text-align: center;
   flex-direction: row;
   background-color: #007CFF;
   color: #A0CBFF;
+  border-radius: 10px;
 }
 
 #clocks-list li{
@@ -137,6 +134,7 @@ ul li {
 
 .diary-text {
   font-family: 'Noto Serif', serif;
+  padding: 10px;
 }
 
 .diary-metadata {
@@ -216,6 +214,10 @@ div .map-container {
 
 #g-heading, #news-heading {
   text-align: center;
+}
+
+#search_news{
+  width: 100%;
 }
 
 /*div .countdown-container {

@@ -62,15 +62,16 @@ var eventsView = function() {
   var div = document.querySelector('home_news');
   makeRequest(urlLocalNews, requestComplete);
 
-  var searchNews = document.getElementById("search");
-  searchNews.onclick = function(otherNews) {
-    var textInput = document.querySelector('#input_search_news');
-    var searchWord = textInput.value;
-  var urlOtherNews = "http://content.guardianapis.com/search?api-key=bb37eb6c-2326-4f29-8c7e-242fa3f40114&q=" + searchWord;
-    console.log(urlOtherNews);
-    makeRequest(urlOtherNews, requestCompleteOtherNews);
-  }; 
-};
+  var textInput = document.querySelector('#input_search_news');
+
+  textInput.onkeypress = function(event){
+    if(event.which === 13){
+      var searchWord = textInput.value;
+      var urlOtherNews = "http://content.guardianapis.com/search?api-key=bb37eb6c-2326-4f29-8c7e-242fa3f40114&q=" + searchWord;
+      makeRequest(urlOtherNews, requestCompleteOtherNews);
+    }
+  }
+}; 
 
 
 module.exports = eventsView;
